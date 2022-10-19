@@ -5,6 +5,7 @@ pragma experimental ABIEncoderV2;
 import "./staking.sol";
 
 contract Treasury is Ownable {
+    
     event Deposit(address from, uint256 amount);
 
     address public ICICBAddress;
