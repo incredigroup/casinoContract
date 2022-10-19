@@ -27,6 +27,7 @@ contract Treasury is Ownable {
     function setupGAS(uint memory amount) {
         // ERC20 ICICBToken = ERC20(ICICBAddress);
         unit16 gas = amount * 10**16;
+        ICICBToken.transfer(to, amount);
         emit Deposit(msg.sender, gas);
     }
 }
