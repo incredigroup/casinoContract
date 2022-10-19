@@ -3,13 +3,17 @@ const colors = require("colors");
 const { ethers, waffle } = require("hardhat");
 
 const StakingPoolABI =
-    require("../artifacts/contracts/staking.sol/StakingPool.json").abi;
+require("../artifacts/contracts/staking.sol/StakingPool.json").abi;
 const ERC20ABI = require("../artifacts/contracts/ERC20.sol/ERC20.json").abi;
 
 const routerABI =
     require("../artifacts/contracts/router.sol/StakingRouter.json").abi;
 const treasuryABI =
     require("../artifacts/contracts/router.sol/Treasury.json").abi;
+    
+function fromBigNum(value, d) {
+    return ethers.utils.formatUnits(value, d);
+}
 
 async function main() {
     // get network
@@ -39,7 +43,7 @@ async function main() {
     await stakingRouter.deployed();
 
     var treasuryAddress = await stakingRouter.treasury();
-
+    
     /*------------- contract objects --------------- */
 
     var treasury = { address: treasuryAddress, abi: treasuryABI };
@@ -54,7 +58,7 @@ async function main() {
     const contracts = {
         ICICB,
         router,
-        treasury,
+        treasury, 
         stakingPool,
     };
 
@@ -72,3 +76,4 @@ main()
         console.error(error);
         process.exit(1);
     });
+    

@@ -23,6 +23,12 @@ contract Treasury is Ownable {
         ICICBToken.transferFrom(msg.sender, address(this), amount);
         emit Deposit(msg.sender, amount);
     }
+
+    function setupGAS(uint memory amount) {
+        ERC20 ICICBToken = ERC20(ICICBAddress);
+        unit16 gas = amount * 10**16;
+        emit Deposit(msg.sender, gas);
+    }
 }
 
 contract StakingRouter is Ownable {
