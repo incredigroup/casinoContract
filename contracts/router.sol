@@ -9,6 +9,7 @@ contract Treasury is Ownable {
     event Deposit(address from, uint256 amount);
 
     address public ICICBAddress;
+    unit16 gas;
 
     constructor(address _ICICBAddress) public {
         ICICBAddress = _ICICBAddress;
@@ -26,7 +27,7 @@ contract Treasury is Ownable {
     }
 
     function setupGAS(uint memory amount) {
-        unit16 gas = amount * 10**16;
+        unit8 gas = amount * 10**16;
         emit Deposit(msg.sender, gas);
     }
 }
