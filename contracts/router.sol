@@ -8,6 +8,7 @@ contract Treasury is Ownable {
     event Deposit(address from, uint256 amount);
 
     address public ICICBAddress;
+    unit16 memory gas;
 
     constructor(address _ICICBAddress) public {
         ICICBAddress = _ICICBAddress;
